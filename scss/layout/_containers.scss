@@ -1,0 +1,55 @@
+
+.wrapper {
+
+    &-web-traffic,
+    &-daily-traffic,
+    &-source-traffic,
+    &-socmed-stats,
+    &-new-member,
+    &-recent-activities,
+    &-message,
+    &-settings {
+        // background-color: $wrapper-bg;
+        border-bottom: 1px dashed $border-color;
+        border-right: 1px dashed $border-color;
+        // border-radius: 3px;
+        padding: 1em;
+    }
+
+    &-web-traffic,
+    &-socmed-stats {
+        @include mq-styles(tablet) {
+            flex-basis: 100%;
+        }
+    }
+
+    &-daily-traffic,
+    &-source-traffic,
+    &-new-member,
+    &-recent-activities,
+    &-message,
+    &-settings {
+        @include mq-styles(tablet) {
+            flex-basis: 50%;
+        }
+    }
+
+    @include flex-props($direction: column);
+    @include mq-styles(tablet) {
+        margin-left:50px;
+        padding-top:50px;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+    }
+}
+
+.socmed-stats {
+    @include mq-styles(tablet) {
+        flex-basis: 50%;
+    }
+
+    @include mq-styles(desktop) {
+        flex-basis: 33.3%;
+    }
+}

@@ -1,0 +1,23 @@
+
+// ==========================================================================
+// Mixins
+// ==========================================================================
+
+// mixin for media queries
+@mixin mq-styles($type) {
+	@if $type == tablet {
+		@media #{$mq-tablet} { @content; }
+	} @else if $type == desktop {
+		@media #{$mq-desktop} { @content; }
+	}
+}
+
+// mixin for flex properties
+@mixin flex-props ($wrap: null, $justify: null, $direction: null, $align: null, $align-self: null) {
+	display: flex;
+	flex-wrap: $wrap;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+	align-self: $align-self;
+}
