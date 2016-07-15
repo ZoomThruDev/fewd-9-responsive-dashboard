@@ -2,24 +2,31 @@
 // descriptive color vars
 $darkblue   : #2e6da4;
 $white      : #fff;
-$off-white  : #ccc; // #E6E6E6;
+$off-white  : #fbfbfb;
 $black      : #000;
 
 // functional color vars
-$primary-color  : $darkblue;
-$secondary-color : darken($darkblue, 10%);
-$wrapper-bg     : lighten($darkblue, 55%);
-$border-color   : $off-white;
-// $wrapper-bg     : $off-white;
-$light-text     : $white;
-$dark-text      : $black;
+$primary-color      : $darkblue;
+$secondary-color    : darken($darkblue, 10%);
+$wrapper-bg         : lighten($darkblue, 55%);
+$border-color       : darken($off-white, 10%);
+$body-bg            : $off-white;
+$widget-bg          : $off-white;
+$light-text         : $white;
+$dark-text          : $black;
+
+// measurements
+$max-width          : 1200px;
+$nav-width          : 50px;
+$switch-width       : 40px;
+$switch-height      : $switch-width / 2 + 2;
 
 // media queries
 $mq-desktop		: 'only screen and (min-width: 1024px)';
 $mq-tablet		: 'only screen and (min-width: 768px)';
-$mq-mobile		: 'only screen and (max-width: 425px)';
+// $mq-mobile		: 'only screen and (max-width: 425px)';
 
 // fonts
 $stack-sans-serif	: Helvetica, Arial, sans-serif;
 $stack-roboto   	: 'Roboto', $stack-sans-serif;
-$base-font-size		: 1em;
+$base-font-size		: 0.9em;

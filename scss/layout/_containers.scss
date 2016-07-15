@@ -1,5 +1,22 @@
+.main-container {
+    max-width: $max-width;
+    background-color: $light-text;
+    @include mq-styles(tablet) {
+        @include flex-props($direction: row);
+    }
+}
 
 .wrapper {
+
+    @include flex-props($direction: column);
+    @include mq-styles(tablet) {
+
+        flex-direction: row;
+        flex-wrap: wrap;
+
+    }
+
+    // Child contents
 
     &-web-traffic,
     &-daily-traffic,
@@ -9,47 +26,83 @@
     &-recent-activities,
     &-message,
     &-settings {
-        // background-color: $wrapper-bg;
         border-bottom: 1px dashed $border-color;
-        border-right: 1px dashed $border-color;
-        // border-radius: 3px;
         padding: 1em;
     }
 
     &-web-traffic,
-    &-socmed-stats {
+    &-daily-traffic,
+    &-source-traffic,
+    &-socmed-stats,
+    &-tab-search {
         @include mq-styles(tablet) {
             flex-basis: 100%;
+            width: 100%;
         }
     }
 
-    &-daily-traffic,
-    &-source-traffic,
     &-new-member,
     &-recent-activities,
     &-message,
     &-settings {
         @include mq-styles(tablet) {
             flex-basis: 50%;
+            width: 50%;
         }
     }
 
-    @include flex-props($direction: column);
-    @include mq-styles(tablet) {
-        margin-left:50px;
-        padding-top:50px;
-        flex-direction: row;
-        flex-wrap: wrap;
-
-    }
-}
-
-.socmed-stats {
-    @include mq-styles(tablet) {
-        flex-basis: 50%;
+    &-daily-traffic,
+    &-new-member,
+    &-message {
+        @include mq-styles(tablet) {
+            border-right: 1px dashed $border-color;
+        }
     }
 
-    @include mq-styles(desktop) {
-        flex-basis: 33.3%;
+    &-daily-traffic,
+    &-source-traffic {
+        @include mq-styles(tablet) {
+            flex-basis: 50%;
+            width: 50%;
+        }
     }
+
+    &-socmed-stats {
+        @include flex-props($direction: column, $align: center, $justify: space-between, $wrap: wrap);
+
+        @include mq-styles(tablet) {
+            flex-direction: row;
+        }
+    }
+
+    // container for title tab and search bar
+    &-tab-search {
+        @include flex-props($direction: column, $align: center);
+        @include mq-styles(tablet) {
+            flex-direction: row;
+        }
+    }
+
+    // the title tab
+    &-tab {
+        display: none;
+        @include mq-styles(tablet) {
+            padding: 0 20px;
+            display: inline;
+        }
+
+    }
+
+    // search bar
+    &-search-bar {
+        background-color: $body-bg;
+        width: 100%;
+        @include mq-styles(tablet) {
+            flex: 1;
+            border-left: 1px solid $border-color;
+            border-bottom: 1px solid $border-color;
+
+        }
+    }
+
 }

@@ -4,21 +4,43 @@
 #members-svg,
 #settings-svg {
     width: auto;
-    height: 20px;
+    height: $nav-width / 2;
     transition: all 0.3s ease-in;
     -webkit-transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
 
-    @include mq-styles(tablet) {
-        width: 50px;
-    }
+    // @include mq-styles(tablet) {
+    //     width: 50px;
+    // }
 
+}
+
+#bell-svg {
+    margin-top: 3px;
+    margin-right: $nav-width / 3;
+}
+
+#dashboard-svg,
+#visits-svg,
+#members-svg,
+#settings-svg {
+    margin: $nav-width / 3;
+}
+
+#dashboard-svg {
+    margin-top: $nav-width / 3 + 5;
+}
+
+.socmed-icons {
+    width: 70px;
+    margin-top: 5px;
 }
 
 .bell-svg-path,
 .dashboard-svg-path,
 .visits-svg-path,
 .members-svg-path,
-.settings-svg-path {
+.settings-svg-path,
+.socmed-icons {
     fill: $light-text;
 }

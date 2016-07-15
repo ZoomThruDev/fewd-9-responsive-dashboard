@@ -100,14 +100,8 @@ var donut_chart = new Chart(donut_chart_area, {
                 ]
             }]
 
+    },
+    options: {
+        responsive: true
     }
-    // options: {
-    //     scales: {
-    //         yAxes: [{
-    //             ticks: {
-    //                 beginAtZero:true
-    //             }
-    //         }]
-    //     }
-    // }
 });

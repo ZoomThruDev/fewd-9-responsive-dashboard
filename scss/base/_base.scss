@@ -4,11 +4,12 @@
 
 body {
     font-family: $stack-roboto;
+	background-color: $body-bg;
+	font-size: $base-font-size;
+	font-weight: 300;
 }
 
-.avatar-img {
-	border-radius: 50%;
-	background-color: white;
-	width: 30px;
+canvas {
+	width: 100%;
 	height: auto;
 }
