@@ -9,6 +9,7 @@
 .wrapper {
 
     @include flex-props($direction: column);
+    flex: 1 100%;
     @include mq-styles(tablet) {
 
         flex-direction: row;
@@ -31,8 +32,6 @@
     }
 
     &-web-traffic,
-    &-daily-traffic,
-    &-source-traffic,
     &-socmed-stats,
     &-tab-search {
         @include mq-styles(tablet) {
@@ -41,29 +40,26 @@
         }
     }
 
+    // containers that are 50% width on tablets and above
+    &-daily-traffic,
+    &-source-traffic,
     &-new-member,
     &-recent-activities,
     &-message,
     &-settings {
         @include mq-styles(tablet) {
-            flex-basis: 50%;
-            width: 50%;
+            // flex-basis: 50%;
+            // width: 50%;
+            flex: 0 50%;
         }
     }
 
+    // borders for 50% width containers located on left side
     &-daily-traffic,
     &-new-member,
     &-message {
         @include mq-styles(tablet) {
             border-right: 1px dashed $border-color;
-        }
-    }
-
-    &-daily-traffic,
-    &-source-traffic {
-        @include mq-styles(tablet) {
-            flex-basis: 50%;
-            width: 50%;
         }
     }
 
@@ -101,8 +97,19 @@
             flex: 1;
             border-left: 1px solid $border-color;
             border-bottom: 1px solid $border-color;
-
         }
     }
 
+}
+
+.grouped {
+    @include flex-props($direction: row, $justify: space-between);
+
+    & .chart-options {
+        display: none;
+        
+        @include mq-styles(tablet) {
+            display: inline;
+        }
+    }
 }

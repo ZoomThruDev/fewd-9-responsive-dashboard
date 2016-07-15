@@ -63,8 +63,26 @@ button {
     }
 
 }
-#search label {
+label {
     display: none;
+}
+
+// settings form
+#user-settings-form {
+    & .option {
+        @include flex-props($direction: row, $align: center);
+        margin-bottom: 10px;
+
+        & span {
+            width: 60%;
+        }
+    }
+
+    & select {
+        margin-bottom: 15px;
+        margin-top: 15px;
+    }
+
 }
 
 /* The switch - the box around the slider */

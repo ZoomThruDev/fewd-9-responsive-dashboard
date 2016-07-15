@@ -129,7 +129,17 @@
 
                 <div class="wrapper-web-traffic">
                     <!-- web traffic chart -->
-                    <h3 class="widget-title">Web Traffic</h3>
+                    <div class="grouped">
+                        <h3 class="widget-title">Web Traffic</h3>
+                        <nav class="chart-options">
+                            <ul>
+                                <li><a href="#" id="hourly-traffic" class="chart-option-btn">Hourly</a></li>
+                                <li><a href="#" id="daily-traffic" class="chart-option-btn">Daily</a></li>
+                                <li><a href="#" id="weekly-traffic" class="chart-option-btn">Weekly</a></li>
+                                <li><a href="#" id="monthly-traffic" class="chart-option-btn">Monthly</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                     <canvas id="web-traffic-line-chart" width="300" height="200"></canvas>
                 </div>
                 <!-- <div class="wrapper-traffic-sources"> -->
@@ -292,18 +302,23 @@
                         <form id="user-settings-form">
                             <fieldset>
                                 <legend>Adjust your settings</legend>
-                                Send email notification
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <div class="slider round"></div>
-                                </label>
-                                Set profile to public
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <div class="slider round"></div>
-                                </label>
+                                <div class="option">
+                                    <span>Send email notification</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <div class="slider round"></div>
+                                    </label>
+                                </div>
+                                <div class="option">
+                                    <span>Set profile to public</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <div class="slider round"></div>
+                                    </label>
+                                </div>
                                 <label for="user-timezone">Select Timezone</label>
                                 <select id="user-timezone" name="timezone-select">
+                                    <option value="" disabled selected hidden>Select Timezone</option>
                                     <option timeZoneId="1" gmtAdjustment="GMT-12:00" useDaylightTime="0" value="-12">(GMT-12:00) International Date Line West</option>
                                 	<option timeZoneId="2" gmtAdjustment="GMT-11:00" useDaylightTime="0" value="-11">(GMT-11:00) Midway Island, Samoa</option>
                                 	<option timeZoneId="3" gmtAdjustment="GMT-10:00" useDaylightTime="0" value="-10">(GMT-10:00) Hawaii</option>
