@@ -8,8 +8,8 @@ body {
   font-weight: 300; }
 
 canvas {
-  width: 100%;
-  height: auto; }
+  width: 100% !important;
+  height: auto !important; }
 
 .main-container {
   max-width: 1200px;

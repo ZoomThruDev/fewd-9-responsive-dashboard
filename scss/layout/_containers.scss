@@ -11,10 +11,8 @@
     @include flex-props($direction: column);
     flex: 1 100%;
     @include mq-styles(tablet) {
-
         flex-direction: row;
         flex-wrap: wrap;
-
     }
 
     // Child contents
@@ -107,7 +105,7 @@
 
     & .chart-options {
         display: none;
-        
+
         @include mq-styles(tablet) {
             display: inline;
         }
