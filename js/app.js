@@ -256,15 +256,14 @@ $("#notif-button").click(function(){
 
 // MESSAGE USER FORM VALIDATION
 $('#btn-message-send').click(function(event){
-    var message = '';
     event.preventDefault(event);
-    if($.trim($('#user-message').val()) == '' || $.trim($('#user-name-search').val()) == ''){
-        $( "#message-form-alert" ).css('background-color', '#ffdb99')
+    if($.trim($('#user-message').val()) === '' || $.trim($('#user-name-search').val()) === ''){
+        $( "#message-form-alert" ).css('background-color', '#ffdb99');
         $( "#message-form-alert" ).html('Username and message are required!')
-             .fadeIn( "fast" )
+             .fadeIn( "fast" );
    } else {
     // Show success message, fade in then fade out
-        $( "#message-form-alert" ).css('background-color', '#5fba7d')
+        $( "#message-form-alert" ).css('background-color', '#5fba7d');
         $( "#message-form-alert" ).html('Message sent!')
             .fadeIn( "fast" )
             .delay(1000)
