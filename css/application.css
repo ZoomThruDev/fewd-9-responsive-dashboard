@@ -74,13 +74,14 @@ canvas {
 
 .grouped {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between; }
-  .grouped #datasets-options {
-    display: none; }
-    @media only screen and (min-width: 768px) {
-      .grouped #datasets-options {
-        display: inline; } }
+  flex-direction: column;
+  margin-bottom: 1.2em; }
+  @media only screen and (min-width: 768px) {
+    .grouped {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center; } }
 
 .top {
   background-color: #2e6da4;
@@ -124,11 +125,21 @@ canvas {
       .top-user-name {
         padding: 0;
         border-left: 0; } }
-  .top .notif-button {
-    border-right: 0; }
-    @media only screen and (min-width: 768px) {
-      .top .notif-button {
-        border-right: 1px solid #fff; } }
+  .top-separator {
+    font-size: 1.8em; }
+
+.notif-button {
+  position: relative; }
+
+.orange-dot {
+  background-color: orange;
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  left: 20px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px; }
 
 .vertical-nav {
   display: flex;
@@ -141,25 +152,32 @@ canvas {
       display: flex;
       flex-direction: column;
       justify-content: flex-start; } }
+  .vertical-nav a.active {
+    border-bottom: 2px solid orange; }
+    @media only screen and (min-width: 768px) {
+      .vertical-nav a.active {
+        border-left: 2px solid orange;
+        border-bottom: 0; } }
 
-#datasets-options ul li {
-  list-style: none;
-  display: inline;
-  margin: 0 5px;
-  margin-left: auto; }
-  #datasets-options ul li a {
+#datasets-options {
+  flex: 1 100%;
+  text-align: center; }
+  @media only screen and (min-width: 768px) {
+    #datasets-options {
+      text-align: right; } }
+  #datasets-options a {
     text-decoration: none;
     font-weight: 400;
     color: #000;
     padding: 3px 10px; }
-    #datasets-options ul li a:hover {
-      background-color: #B14843;
+    #datasets-options a:hover {
+      background-color: #e74c3c;
       color: #fff;
       border-radius: 10px; }
-#datasets-options .active {
-  background-color: #B14843;
-  color: #fff;
-  border-radius: 10px; }
+  #datasets-options .active {
+    background-color: #e74c3c;
+    color: #fff;
+    border-radius: 10px; }
 
 #bell-svg,
 #dashboard-svg,
@@ -174,7 +192,7 @@ canvas {
 
 #bell-svg {
   margin-top: 3px;
-  margin-right: 16.66667px; }
+  margin-right: 10px; }
 
 #dashboard-svg,
 #visits-svg,
@@ -263,6 +281,16 @@ label {
   margin-bottom: 15px;
   margin-top: 15px; }
 
+#message-form-alert {
+  display: none;
+  text-align: center;
+  padding: 10px;
+  background: #ffdb99;
+  margin-bottom: 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px; }
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -313,7 +341,8 @@ input:checked + .slider:before {
 .widget-title {
   width: 100%;
   text-transform: uppercase;
-  font-size: 1em; }
+  font-size: 1em;
+  flex: 1 100%; }
 
 .socmed-stats {
   display: flex;
@@ -437,5 +466,14 @@ input:checked + .slider:before {
       padding: 15px; }
     #notif-dialog ul li:last-child {
       border-bottom: 0; }
+
+.ui-widget {
+  font-family: "Roboto", Helvetica, Arial, sans-serif; }
+  .ui-widget .ui-widget {
+    font-size: 0;
+    background: #fff; }
+  .ui-widget-header {
+    background: #2e6da4;
+    color: #fff; }
 
 /*# sourceMappingURL=application.css.map */

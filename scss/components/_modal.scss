@@ -21,3 +21,17 @@
     }
 
 }
+
+.ui-widget{
+    font-family: $stack-roboto;
+
+    & .ui-widget {
+        font-size: 0;
+        background: $light-text;
+    }
+
+    &-header {
+        background: $primary-color;
+        color: $light-text;
+    }
+}

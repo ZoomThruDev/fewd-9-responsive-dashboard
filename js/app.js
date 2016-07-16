@@ -111,28 +111,33 @@ var line_chart = new Chart(line_chart_area, {
 
 // Button clicks function to swap line charts datasets
 
-$("#datasets-options a").click(function() {
+$("#datasets-options a").click(function(event) {
         $('#datasets-options a').removeClass("active");
         $(this).addClass("active");
+        event.preventDefault(event);
     });
 
     // Update charts
-     $("#hourly-btn").click(function() {
+     $("#hourly-btn").click(function(event) {
+         event.preventDefault(event);
          line_chart.config.data = hourly_data;
          line_chart.update();
      });
 
-     $("#daily-btn").click(function() {
+     $("#daily-btn").click(function(event) {
+         event.preventDefault(event);
          line_chart.config.data = daily_data;
          line_chart.update();
      });
 
-     $("#weekly-btn").click(function() {
+     $("#weekly-btn").click(function(event) {
+         event.preventDefault(event);
          line_chart.config.data = weekly_data;
          line_chart.update();
      });
 
-     $("#monthly-btn").click(function() {
+     $("#monthly-btn").click(function(event) {
+         event.preventDefault(event);
          line_chart.config.data = monthly_data;
          line_chart.update();
      });
@@ -234,7 +239,14 @@ $( "#notif-dialog" ).dialog({
     hide: {
         effect: "fade",
         duration: 150
-    }
+    },
+    	position: {
+    		my: "center",
+    		at: "center"
+    	},
+	// Add the 2 options below to use click outside feature
+	clickOutside: true, // clicking outside the dialog will close it
+	clickOutsideTrigger: "#notif-button"  // Element (id or class) that triggers the dialog opening
 });
 
 $("#notif-button").click(function(){
@@ -245,16 +257,24 @@ $("#notif-button").click(function(){
 // MESSAGE USER FORM VALIDATION
 $('#btn-message-send').click(function(event){
     var message = '';
-
-    if($.trim($('#user-message').val()) == '' || $.trim($('#user-name-search').val()) == ''){
-       message = 'User name and message are required!';
-   } else {
-       message = 'Message sent!';
-       $('#user-message').val('');
-       $('#user-name-search').val('');
-   }
-    alert(message);
     event.preventDefault(event);
+    if($.trim($('#user-message').val()) == '' || $.trim($('#user-name-search').val()) == ''){
+        $( "#message-form-alert" ).css('background-color', '#ffdb99')
+        $( "#message-form-alert" ).html('Username and message are required!')
+             .fadeIn( "fast" )
+   } else {
+    // Show success message, fade in then fade out
+        $( "#message-form-alert" ).css('background-color', '#5fba7d')
+        $( "#message-form-alert" ).html('Message sent!')
+            .fadeIn( "fast" )
+            .delay(1000)
+            .fadeOut('slow');
+
+        // clear the textfields
+        $('#user-message').val('');
+        $('#user-name-search').val('');
+   }
+
 
 });
 

@@ -85,6 +85,16 @@ label {
 
 }
 
+#message-form-alert {
+    display: none;
+    text-align: center;
+    padding: 10px;
+    background: lighten($accent-color-2, 30%);
+    margin-bottom: 10px;
+    @include border-rads(3px);
+}
+
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;

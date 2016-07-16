@@ -101,13 +101,10 @@
 }
 
 .grouped {
-    @include flex-props($direction: row, $justify: space-between);
+    @include flex-props($direction: column);
+    margin-bottom: $base-font-size + 0.3;
 
-    & #datasets-options {
-        display: none;
-
-        @include mq-styles(tablet) {
-            display: inline;
-        }
+    @include mq-styles(tablet) {
+        @include flex-props($direction: row, $justify: space-between, $align: center);
     }
 }

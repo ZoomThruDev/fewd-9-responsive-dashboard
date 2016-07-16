@@ -21,3 +21,9 @@
 	align-items: $align;
 	align-self: $align-self;
 }
+
+@mixin border-rads ($rad) {
+  -webkit-border-radius: $rad;
+  -moz-border-radius: $rad; 
+  border-radius: $rad;
+}
