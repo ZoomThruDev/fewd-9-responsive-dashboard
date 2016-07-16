@@ -74,6 +74,7 @@
     margin-left: auto;
     font-weight: 400;
     font-size: $base-font-size + 0.2;
+    cursor: pointer;
 }
 
 .new-member-details {
@@ -113,6 +114,17 @@
     width: 45px;
     height: 45px;
     margin-right: 10px;
+}
+
+.activity-icon {
+    width: 35px;
+    height: 45px;
+    margin-right: 10px;
+}
+
+.activity-arrow {
+    width: 20px;
+    height: 20px;
 }
 
 .info {

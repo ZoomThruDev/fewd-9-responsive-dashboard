@@ -9,7 +9,8 @@ body {
 
 canvas {
   width: 100% !important;
-  height: auto !important; }
+  height: auto !important;
+  max-height: 350px; }
 
 .main-container {
   max-width: 1200px;
@@ -75,10 +76,10 @@ canvas {
   display: flex;
   flex-direction: row;
   justify-content: space-between; }
-  .grouped .chart-options {
+  .grouped #datasets-options {
     display: none; }
     @media only screen and (min-width: 768px) {
-      .grouped .chart-options {
+      .grouped #datasets-options {
         display: inline; } }
 
 .top {
@@ -141,19 +142,24 @@ canvas {
       flex-direction: column;
       justify-content: flex-start; } }
 
-.chart-options ul li {
+#datasets-options ul li {
   list-style: none;
   display: inline;
-  margin: 0 5px; }
-  .chart-options ul li a {
+  margin: 0 5px;
+  margin-left: auto; }
+  #datasets-options ul li a {
     text-decoration: none;
     font-weight: 400;
     color: #000;
     padding: 3px 10px; }
-    .chart-options ul li a:hover {
+    #datasets-options ul li a:hover {
       background-color: #B14843;
       color: #fff;
       border-radius: 10px; }
+#datasets-options .active {
+  background-color: #B14843;
+  color: #fff;
+  border-radius: 10px; }
 
 #bell-svg,
 #dashboard-svg,
@@ -188,7 +194,8 @@ canvas {
 .visits-svg-path,
 .members-svg-path,
 .settings-svg-path,
-.socmed-icons {
+.socmed-icons,
+.activity-icon {
   fill: #fff; }
 
 fieldset {
@@ -250,7 +257,7 @@ label {
   flex-direction: row;
   align-items: center;
   margin-bottom: 10px; }
-  #user-settings-form .option span {
+  #user-settings-form .option .label {
     width: 60%; }
 #user-settings-form select {
   margin-bottom: 15px;
@@ -366,7 +373,8 @@ input:checked + .slider:before {
 #alert-dismiss {
   margin-left: auto;
   font-weight: 400;
-  font-size: 1.1em; }
+  font-size: 1.1em;
+  cursor: pointer; }
 
 .new-member-details {
   display: flex;
@@ -402,9 +410,32 @@ input:checked + .slider:before {
   height: 45px;
   margin-right: 10px; }
 
+.activity-icon {
+  width: 35px;
+  height: 45px;
+  margin-right: 10px; }
+
+.activity-arrow {
+  width: 20px;
+  height: 20px; }
+
 .info {
   display: flex;
   flex-direction: column;
   flex: 1; }
+
+#notif-dialog {
+  display: none;
+  width: 250px;
+  font-size: 0.8em; }
+  #notif-dialog ul {
+    padding: 0;
+    margin: 0; }
+    #notif-dialog ul li {
+      list-style: none;
+      border-bottom: 1px solid #e2e2e2;
+      padding: 15px; }
+    #notif-dialog ul li:last-child {
+      border-bottom: 0; }
 
 /*# sourceMappingURL=application.css.map */

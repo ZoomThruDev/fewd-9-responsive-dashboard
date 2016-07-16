@@ -1,42 +1,145 @@
+ // Options
+ var legend_options = {
+     display: true,
+     position: "bottom",
+     labels: {
+         fontFamily: 'Roboto, sans-serif',
+         boxWidth: 10
+     }
+ };
 
-var line_chart_area = document.getElementById("web-traffic-line-chart");
+// GLOBAL CHARTS OPTIONS
+
+Chart.defaults.global.defaultFontFamily = "'Roboto', Helvetica, Arial, sans-serif";
+Chart.defaults.global.maintainAspectRatio = false;
+Chart.defaults.global.responsive = true;
+Chart.defaults.bar.scaleShowVerticalLines = false;
+
+ // ------------------------------------------------------
+ // LINE CHARTS
+ // ------------------------------------------------------
+
+ // Hourly, Daily, Weekly and Monthly Datasets for line charts
+
+ var hourly_data = {
+     labels: ['12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00'],
+     datasets: [
+         {
+             data: [4500, 5000, 5500, 6000, 6500, 7000, 8000, 7500, 6500, 6000, 5500],
+             backgroundColor: 'rgba(88, 20, 181, 0.3)',
+             lineTension: 0,
+             pointBorderColor: 'rgba(88, 20, 18, 0.8)',
+             pointRadius: 6,
+             pointBorderWidth: 2,
+             pointBackgroundColor: '#fff'
+         }
+     ]
+ };
+
+
+var daily_data = {
+    labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    datasets: [
+        {
+            data: [5000, 6000, 5500, 6500, 7000, 7500, 8000],
+            backgroundColor: 'rgba(74, 217, 217, 0.3)',
+            lineTension: 0,
+            pointBorderColor: 'rgba(74, 217, 217, 0.8)',
+            pointRadius: 6,
+            pointBorderWidth: 2,
+            pointBackgroundColor: '#fff'
+        }
+    ]
+};
+
+var weekly_data = {
+  labels: ['16-22','23-29','30-5','6-12','13-19','20-26','27-3','4-10','11-17','18-24','25-31'],
+  datasets: [
+      {
+          data: [6000, 8000, 9000, 8500, 7000, 9500, 9000, 8000, 7000, 6500, 5500],
+          backgroundColor: 'rgba(245, 165, 3, 0.3)',
+          lineTension: 0,
+          pointBorderColor: 'rgba(245, 165, 3, 0.8)',
+          pointRadius: 6,
+          pointBorderWidth: 2,
+          pointBackgroundColor: '#fff'
+      }
+  ]
+};
+
+var monthly_data = {
+  labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov', 'Dec'],
+  datasets: [
+      {
+          data: [6000, 8000, 9000, 8500, 7000, 9500, 9000, 8000, 7000, 6500, 5500, 4500],
+          backgroundColor: 'rgba(242, 56, 90, 0.3)',
+          lineTension: 0,
+          pointBorderColor: 'rgba(242, 56, 90, 0.8)',
+          pointRadius: 6,
+          pointBorderWidth: 2,
+          pointBackgroundColor: '#fff'
+      }
+  ]
+};
+
+var line_chart_area = document.getElementById("web-traffic-line-chart").getContext('2d');
 var line_chart = new Chart(line_chart_area, {
     type: 'line',
-    data: {
-        labels: ["S", "M", "W", "T", "T", "F", "S"],
-        datasets: [{
-            label: '# of Votes',
-            data: [15, 14, 20, 11, 16, 10, 13],
-            backgroundColor: [
-                // 'rgba(255, 99, 132, 0.2)',
-                // 'rgba(54, 162, 235, 0.2)',
-                // 'rgba(255, 206, 86, 0.2)',
-                // 'rgba(75, 192, 192, 0.2)',
-                // 'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                // 'rgba(255,99,132,1)',
-                // 'rgba(54, 162, 235, 1)',
-                // 'rgba(255, 206, 86, 1)',
-                // 'rgba(75, 192, 192, 1)',
-                // 'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
+    data: weekly_data,
     options: {
+        legend: {
+            display: false
+        },
         scales: {
             yAxes: [{
+                type: 'linear',
                 ticks: {
-                    beginAtZero:true
+                    max: 10000,
+                    min: 4000,
+                    stepSize: 2000
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    drawTicks: false,
+                    color: '#dfdfdf'
                 }
             }]
         }
     }
 });
 
+// Button clicks function to swap line charts datasets
+
+$("#datasets-options a").click(function() {
+        $('#datasets-options a').removeClass("active");
+        $(this).addClass("active");
+    });
+
+    // Update charts
+     $("#hourly-btn").click(function() {
+         line_chart.config.data = hourly_data;
+         line_chart.update();
+     });
+
+     $("#daily-btn").click(function() {
+         line_chart.config.data = daily_data;
+         line_chart.update();
+     });
+
+     $("#weekly-btn").click(function() {
+         line_chart.config.data = weekly_data;
+         line_chart.update();
+     });
+
+     $("#monthly-btn").click(function() {
+         line_chart.config.data = monthly_data;
+         line_chart.update();
+     });
+
+// ------------------------------------------------------
+// BAR CHARTS
+// ------------------------------------------------------
 
 var bar_chart_area = document.getElementById("daily-traffic-bar-chart");
 var bar_chart = new Chart(bar_chart_area, {
@@ -51,11 +154,12 @@ var bar_chart = new Chart(bar_chart_area, {
         {
             label: 'PM',
             data: [11, 15, 22, 30, 12, 8, 22],
-            backgroundColor: '#AEEE00'
+            backgroundColor: '#e74c3c'//'#b14843'
         }]
     },
     options: {
         stacked: true,
+        legend: legend_options,
         scales: {
             yAxes: [{
                 ticks: {
@@ -65,6 +169,10 @@ var bar_chart = new Chart(bar_chart_area, {
         }
     }
 });
+
+// ------------------------------------------------------
+// DONUT (yummy) CHARTS
+// ------------------------------------------------------
 
 var donut_chart_area = document.getElementById("source-traffic-donut-chart");
 var donut_chart = new Chart(donut_chart_area, {
@@ -80,16 +188,16 @@ var donut_chart = new Chart(donut_chart_area, {
             {
                 data: [300, 50, 100, 20],
                 backgroundColor: [
-                    "#FF358B",
-                    "#01B0F0",
-                    "#AEEE00",
-                    "#333333"
+                    "#2e6da4",
+                    "#2c3e50",
+                    "#e74c3c",
+                    "#3498db"
                 ],
                 hoverBackgroundColor: [
-                    "#FF358B",
-                    "#01B0F0",
-                    "#AEEE00",
-                    "#333333"
+                    "#2e6da4",
+                    "#2c3e50",
+                    "#e74c3c",
+                    "#3498db"
                 ]
             }]
 
@@ -105,4 +213,101 @@ var donut_chart = new Chart(donut_chart_area, {
             }
         }
     }
+});
+
+// ----------------------------------------------------------------------
+
+// CLOSE ALERT DIV ON CLICK
+ $("#alert-dismiss").click(function() {
+     $("#alert").fadeOut("slow");
+ });
+
+
+// NOTIFICATION MODAL DIALOG
+$( "#notif-dialog" ).dialog({
+    autoOpen: false,
+    modal: true,
+    show: {
+        effect: "fade",
+        duration: 150
+    },
+    hide: {
+        effect: "fade",
+        duration: 150
+    }
+});
+
+$("#notif-button").click(function(){
+    $( "#notif-dialog" ).dialog( "open" );
+});
+
+
+// MESSAGE USER FORM VALIDATION
+$('#btn-message-send').click(function(event){
+    var message = '';
+
+    if($.trim($('#user-message').val()) == '' || $.trim($('#user-name-search').val()) == ''){
+       message = 'User name and message are required!';
+   } else {
+       message = 'Message sent!';
+       $('#user-message').val('');
+       $('#user-name-search').val('');
+   }
+    alert(message);
+    event.preventDefault(event);
+
+});
+
+
+// AUTOCOMPLETE USER SEARCH
+var all_users = [
+      "Miranda Lawson",
+      "Evie Fyre",
+      "Piper Wright",
+      "Nick Valentine",
+      "Varric Tethras",
+      "Cullen Rutherford",
+      "Cassandra Pentaghast",
+      "John Shepard",
+      "Liara",
+      "Ezio Auditore"
+];
+$( "#user-name-search" ).autocomplete({
+    source: all_users
+});
+
+// LOCAL STORAGE FOR SETTINGS
+
+// check if localstorage has previously saved a settings,
+// If it exists in localstorage, put it on the respective elements
+var selected_tz = localStorage.getItem("selected-tz");
+var email_pref = localStorage.getItem("email-pref");
+var profile_pref = localStorage.getItem("profile-pref");
+
+if (selected_tz !== '') {
+    $( "select#user-timezone").val(selected_tz);
+}
+
+if (email_pref !== null) {
+    $( "#email-pref" ).prop( "checked", email_pref );
+}
+
+if (profile_pref !== null) {
+    $( "profile-pref" ).prop( "checked", profile_pref );
+}
+
+
+// on save button click, update localstorage
+$( "#btn-settings-save" ).click(function(){
+    // get selected value from timezone dropdown, email and profile preference
+    selected_tz = $( "select#user-timezone option:selected").val();
+    email_pref = $( "#email-pref" ).prop( "checked" );
+    profile_pref = $( "#profile-pref" ).prop( "checked" );
+
+    // update localstorage
+    localStorage.setItem("email-pref", email_pref);
+    localStorage.setItem("profile-pref", profile_pref);
+    localStorage.setItem("selected-tz", selected_tz);
+
+    alert("Settings saved!");
 });

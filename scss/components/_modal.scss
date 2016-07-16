@@ -1,0 +1,23 @@
+
+#notif-dialog {
+    display: none;
+    width: 250px;
+    font-size: $base-font-size - 0.1;
+    // border: 1px solid $border-color;
+
+    & ul {
+        padding: 0;
+        margin: 0;
+
+        & li {
+            list-style: none;
+            border-bottom: 1px solid $border-color;
+            padding: 15px;
+        }
+
+        & li:last-child {
+            border-bottom: 0;
+        }
+    }
+
+}

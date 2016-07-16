@@ -103,7 +103,7 @@
 .grouped {
     @include flex-props($direction: row, $justify: space-between);
 
-    & .chart-options {
+    & #datasets-options {
         display: none;
 
         @include mq-styles(tablet) {

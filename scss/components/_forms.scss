@@ -73,7 +73,7 @@ label {
         @include flex-props($direction: row, $align: center);
         margin-bottom: 10px;
 
-        & span {
+        & .label {
             width: 60%;
         }
     }
