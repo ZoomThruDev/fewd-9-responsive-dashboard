@@ -299,11 +299,12 @@ $( "#user-name-search" ).autocomplete({
 
 // check if localstorage has previously saved a settings,
 // If it exists in localstorage, put it on the respective elements
+// localStorage.clear();
 var selected_tz = localStorage.getItem("selected-tz");
 var email_pref = localStorage.getItem("email-pref");
 var profile_pref = localStorage.getItem("profile-pref");
 
-if (selected_tz !== '') {
+if (selected_tz !== null) {
     $( "select#user-timezone").val(selected_tz);
 }
 
@@ -315,6 +316,7 @@ if (profile_pref !== null) {
     $( "#profile-pref" ).prop( "checked", profile_pref );
 }
 
+// alert("in local storage: " + selected_tz + ", " + email_pref + ", " + profile_pref);
 
 // on save button click, update localstorage
 $( "#btn-settings-save" ).click(function(){
@@ -326,11 +328,23 @@ $( "#btn-settings-save" ).click(function(){
     // alert(selected_tz + ", " + email_pref + ", " + profile_pref);
 
     // update localstorage
-    localStorage.setItem("email-pref", email_pref);
-    localStorage.setItem("profile-pref", profile_pref);
+    // for email and profile reference, remove the items if they are unchecked
+    // can't seem to get consistent results otherwise.
+    if (email_pref) {
+        localStorage.setItem("email-pref", email_pref);
+    } else {
+        localStorage.removeItem("email-pref");
+    }
+
+    if (profile_pref) {
+        localStorage.setItem("profile-pref", profile_pref);
+    } else {
+        localStorage.removeItem("profile-pref");
+    }
+
     localStorage.setItem("selected-tz", selected_tz);
 
-    // alert("saved data: " + localStorage['profile-pref']);
+    // alert(selected_tz + ", " + email_pref + ", " + profile_pref + "---------saved data: " + localStorage['selected-tz']+ ", " + localStorage['email-pref'] + ", " + localStorage['profile-pref']);
 
     alert("Settings saved!");
 });
