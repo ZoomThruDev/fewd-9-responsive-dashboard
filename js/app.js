@@ -330,7 +330,7 @@ $( "#btn-settings-save" ).click(function(){
     localStorage.setItem("profile-pref", profile_pref);
     localStorage.setItem("selected-tz", selected_tz);
 
-    // alert("saved data: " + localStorage['profile-pref']);
+    alert(selected_tz + ", " + email_pref + ", " + profile_pref + "---------saved data: " + localStorage['selected-tz']+ ", " + localStorage['email-pref'] + ", " + localStorage['profile-pref']);
 
-    alert("Settings saved!");
+    // alert("Settings saved!");
 });
