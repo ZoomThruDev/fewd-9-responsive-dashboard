@@ -1,5 +1,5 @@
 .main-container {
-    max-width: $max-width;
+    // max-width: $max-width;
     background-color: $light-text;
     @include mq-styles(tablet) {
         @include flex-props($direction: row);

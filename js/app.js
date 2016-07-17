@@ -312,7 +312,7 @@ if (email_pref !== null) {
 }
 
 if (profile_pref !== null) {
-    $( "profile-pref" ).prop( "checked", profile_pref );
+    $( "#profile-pref" ).prop( "checked", profile_pref );
 }
 
 
@@ -323,10 +323,14 @@ $( "#btn-settings-save" ).click(function(){
     email_pref = $( "#email-pref" ).prop( "checked" );
     profile_pref = $( "#profile-pref" ).prop( "checked" );
 
+    alert(selected_tz + ", " + email_pref + ", " + profile_pref);
+
     // update localstorage
     localStorage.setItem("email-pref", email_pref);
     localStorage.setItem("profile-pref", profile_pref);
     localStorage.setItem("selected-tz", selected_tz);
+
+    alert("saved data: " + localStorage['profile-pref']);
 
     alert("Settings saved!");
 });
