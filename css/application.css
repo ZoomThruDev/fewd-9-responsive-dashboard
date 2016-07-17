@@ -11,9 +11,11 @@ canvas {
   width: 100% !important;
   height: auto !important;
   max-height: 350px; }
+  @media only screen and (min-width: 1024px) {
+    canvas {
+      max-height: 500px; } }
 
 .main-container {
-  max-width: 1200px;
   background-color: #fff; }
   @media only screen and (min-width: 768px) {
     .main-container {
@@ -88,7 +90,6 @@ canvas {
   color: #fff;
   height: 50px;
   width: 100%;
-  max-width: 1200px;
   display: flex;
   flex-direction: row; }
   .top-nav {

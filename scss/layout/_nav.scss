@@ -4,7 +4,7 @@
     color: $light-text;
     height: 50px;
     width: 100%;
-    max-width: $max-width;
+    // max-width: $max-width;
 
     @include flex-props($direction: row);
 

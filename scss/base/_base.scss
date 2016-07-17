@@ -12,5 +12,11 @@ body {
 canvas {
 	width: 100% !important;
 	height: auto !important;
-	max-height: 350px; // for some reason the canvas keep expanding in height not matter how I make the data smaller
+
+	// for some reason the canvas keep expanding in height not matter how I make the data smaller
+	max-height: 350px;
+	@include mq-styles(desktop) {
+		max-height: 500px;
+	}
+
 }
